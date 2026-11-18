@@ -1,0 +1,24 @@
+name: Build Corne v4 Vial Firmware
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Build Firmware
+        run: |
+          qmk compile -kb crkbd/v4/r2c -km vial
+
+      - name: Upload UF2 Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: corne-v4-vial-firmware
+          path: "*.uf2"
