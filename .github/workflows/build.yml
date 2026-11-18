@@ -1,4 +1,4 @@
-name: Build Corne v4 Vial Firmware
+name: Build Corne v4.1 Vial Firmware
 
 on:
   workflow_dispatch:
@@ -13,12 +13,17 @@ jobs:
         with:
           submodules: true
 
+      - name: Disable git safe directory check
+        run: git config --global --add safe.directory "*"
+
       - name: Build Firmware
         run: |
-          qmk compile -kb crkbd/v4/r2c -km vial
+          qmk compile -kb crkbd/rev4_1/standard -km vial
 
       - name: Upload UF2 Artifact
         uses: actions/upload-artifact@v4
         with:
           name: corne-v4-vial-firmware
-          path: "*.uf2"
+          path: |
+            *.uf2
+            *.hex
