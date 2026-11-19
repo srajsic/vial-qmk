@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_MUTE, KC_MPLY,                                                 KC_MNXT, KC_MPRV,
 
         // Left Thumbs (3 keys)                                           Right Thumbs (3 keys)
-        KC_LALT, KC_SPC,  KC_MO(1),                                       KC_MO(2), KC_BSPC, KC_RCTL
+        KC_LALT, KC_SPC,  MO(1),                                          MO(2), KC_BSPC, KC_RCTL
     ),
 
     [1] = LAYOUT_split_3x6_3_ex2(
